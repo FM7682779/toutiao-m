@@ -1,12 +1,12 @@
 <template>
   <div class="my-container">
     <van-cell-group v-if="user" class="user-heard">
-      <van-cell title="昵称" center class="my-info" :border="false">
+      <van-cell :title="userInfo.name" center class="my-info" :border="false">
         <!-- 使用 right-icon 插槽来自定义右侧图标 -->
         <template #icon>
           <van-image
             class="user-image"
-            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            :src="userInfo.photo"
             fit="fill"
             round
           />
@@ -20,19 +20,19 @@
       <van-cell class="user-grid">
         <van-grid :border="false">
           <van-grid-item>
-            <div>0</div>
+            <div>{{userInfo.art_count}}</div>
             <div>头条</div>
           </van-grid-item>
           <van-grid-item>
-            <div>0</div>
+            <div>{{userInfo.follow_count}}</div>
             <div>关注</div>
           </van-grid-item>
           <van-grid-item>
-            <div>0</div>
+            <div>{{userInfo.fans_count}}</div>
             <div>粉丝</div>
           </van-grid-item>
           <van-grid-item>
-            <div>0</div>
+            <div>{{userInfo.like_count}}</div>
             <div>获赞</div>
           </van-grid-item>
         </van-grid>
@@ -61,10 +61,7 @@ export default {
   props: {},
   data() {
     return {
-      user: {
-
-      }
-
+      userInfo: {}
     }
   },
   computed: {
@@ -72,11 +69,18 @@ export default {
   },
   watch: {},
   created() {
-    const a = userInfo()
-    console.dir(a)
+    this.loadUserInfo()
   },
   mounted() { },
   methods: {
+    async loadUserInfo() {
+      try {
+        const { data } = await userInfo()
+        this.userInfo = data.data
+      } catch (error) {
+
+      }
+    },
     loginOut() {
       this.$dialog.confirm({
         title: '退出',
