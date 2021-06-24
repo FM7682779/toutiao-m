@@ -144,12 +144,12 @@ export default {
 </script>
 
 <style scoped lang="less">
-.login-tital {
-  background-color: #3196fa;
-  --van-nav-bar-title-text-color: #fff;
-  --van-nav-bar-title-font-size: 17px;
-  border: none;
-}
+// .login-tital {
+//   background-color: #3196fa;
+//   --van-nav-bar-title-text-color: #fff;
+//   --van-nav-bar-title-font-size: 17px;
+//   border: none;
+// }
 
 .login-but-warp {
   margin-top: 20px;
