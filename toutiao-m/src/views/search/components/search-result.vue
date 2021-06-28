@@ -6,7 +6,12 @@
     finished-text="没有更多了"
     @load="onLoad"
   >
-    <van-cell v-for="(item, index) in list" :key="index" :title="item.title" to="artc" />
+    <van-cell
+      v-for="(item, index) in list"
+      :key="index"
+      :title="item.title"
+      :to="{ name: 'artc', params: { artcid: item.art_id } }"
+    />
   </van-list>
 </template>
 
@@ -63,12 +68,12 @@ export default {
 </script>
 
 <style scoped lang="less">
-.van-list{
-    position: fixed;
-    top: 109px;
-    overflow-y: auto;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
+.van-list {
+  position: fixed;
+  top: 109px;
+  overflow-y: auto;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
 }
 </style>
