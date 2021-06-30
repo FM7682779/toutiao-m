@@ -25,4 +25,11 @@ app.config.globalProperties.$filters = {
   relativeTime(value) {
     return dayjs().from(dayjs(value))
   }
+
+}
+app.config.globalProperties.$filters = {
+  format(value) {
+    return dayjs(value).format('YYYY-MM-DD')
+  }
+
 }

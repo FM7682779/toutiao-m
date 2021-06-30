@@ -39,3 +39,35 @@ export const deleteFollow = userId => {
     url: `/app/v1_0/user/followings/${userId}`
   })
 }
+
+/**
+ * 获取用户信息
+ */
+export const getUserInfo = () => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/user/profile'
+  })
+}
+
+/**
+ * 修改用户信息
+ */
+export const UpdateUserInfo = (data) => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/profile',
+    data
+  })
+}
+
+/**
+ * 修改用户头像
+ */
+export const UpdateAvter = (data) => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/photo',
+    data
+  })
+}

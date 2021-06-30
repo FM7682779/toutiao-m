@@ -12,7 +12,12 @@
           />
         </template>
         <template #right-icon>
-          <van-button plain type="default" round size="mini" class="user-button"
+          <van-button
+          plain
+          type="default"
+          round size="mini"
+          class="user-button"
+          to="userprofile"
             >编辑资料</van-button
           >
         </template>

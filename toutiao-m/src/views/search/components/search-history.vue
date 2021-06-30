@@ -23,7 +23,7 @@ export default {
   components: {},
   props: {
     listSearchhis: {
-      request: true,
+      required: true,
       type: Array
     }
   },
