@@ -101,7 +101,9 @@ export default {
         console.dir(data)
         this.$toast.success('登录成功')
         this.$store.commit('setUser', data.data)
-        this.$router.push('/my')
+        this.$store.commit('removeCachePage', 'LayoutIndex')
+        const url = this.$route.query.redirect
+        this.$router.push(url || '/my')
       } catch (error) {
         console.log(error)
         this.$toast.fail('登录失败')

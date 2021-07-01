@@ -6,7 +6,11 @@
       <van-tabbar-item icon="tv-o" to="/video">视频</van-tabbar-item>
       <van-tabbar-item icon="user-o" to="/my">我的</van-tabbar-item>
     </van-tabbar>
-    <router-view />
+    <router-view v-slot="{ Component }">
+  <keep-alive>
+    <component :is="Component" />
+  </keep-alive>
+</router-view>
   </div>
 </template>
 
@@ -23,7 +27,9 @@ export default {
   computed: {},
   watch: {},
   created() { },
-  mounted() { },
+  mounted() {
+    this.$store.commit('addcachePage', 'LayoutIndex')
+  },
   methods: {}
 }
 </script>

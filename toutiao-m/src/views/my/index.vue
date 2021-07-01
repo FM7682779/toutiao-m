@@ -52,7 +52,7 @@
       <van-grid-item icon="photo-o" text="文字" class="grid-item" />
       <van-grid-item icon="photo-o" text="文字" class="grid-item" />
     </van-grid>
-    <van-cell title="小智同学" is-link to="/" class="xiaozhi" />
+    <van-cell title="小智同学" is-link to="chart" class="xiaozhi" />
     <van-cell v-if="user" center title="退出登录" class="login-out" @click="loginOut" />
   </div>
 </template>

@@ -1,5 +1,6 @@
 <template>
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+<div class="artlist-warp" ref="artlist-warp">
+  <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
     <van-list
       class="art-list"
       v-model:loading="loading"
@@ -7,14 +8,16 @@
       finished-text="没有更多了"
       @load="onLoad"
     >
-<artcs :artcellist="artcellist"/>
+      <artcs :artcellist="artcellist" />
     </van-list>
-    </van-pull-refresh>
+  </van-pull-refresh>
+</div>
 </template>
 
 <script>
 import { getArts } from '@/api/art'
 import Artcs from '@/components/atics.vue'
+import { debounce } from 'lodash'
 export default {
   name: 'ArtcelList',
   components: {
@@ -32,13 +35,23 @@ export default {
       loading: false,
       finished: false,
       timestamp: null,
-      refreshing: false
+      refreshing: false,
+      listPostion: 0
     }
   },
   computed: {},
   watch: {},
   created() { },
-  mounted() { },
+  activated() {
+    const artlist = this.$refs['artlist-warp']
+    artlist.scrollTop = this.listPostion
+  },
+  mounted() {
+    const artlist = this.$refs['artlist-warp']
+    artlist.onscroll = debounce(() => {
+      this.listPostion = artlist.scrollTop
+    }, 50)
+  },
   methods: {
     async onLoad() {
       try {
@@ -84,5 +97,12 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+.artlist-warp {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 180px;
+  bottom: 100px;
+  overflow-y: auto;
+}
 </style>

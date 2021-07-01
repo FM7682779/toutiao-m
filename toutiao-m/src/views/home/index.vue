@@ -10,9 +10,7 @@
         <template #title>
           <span>{{ chanel.name }}</span>
         </template>
-        <div class="artlist-warp">
           <artcel-list :channel="chanel" :tag="active" />
-        </div>
       </van-tab>
       <template #nav-right @click="showDialog">
         <div class="t-nav" @click="showDialog">
@@ -120,14 +118,7 @@ export default {
   border-right: 1px solid #edeff3;
   border-bottom: 1px solid #edeff3;
 }
-.artlist-warp {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 180px;
-  bottom: 100px;
-  overflow-y: auto;
-}
+
 .t-nav {
   position: fixed;
   right: 0px;
